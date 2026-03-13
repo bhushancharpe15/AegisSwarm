@@ -1,8 +1,8 @@
 import argparse
 import os
 import uvicorn
-from backend.core.simulation_engine import SimulationEngine
-from backend.monitoring.logging.logger import logger
+fromcore.simulation_engine import SimulationEngine
+frommonitoring.logging.logger import logger
 
 def run_local_simulation():
     """Runs a dedicated local simulation (Phase 1/2 style)."""

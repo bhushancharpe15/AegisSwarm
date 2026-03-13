@@ -1,10 +1,10 @@
 from typing import List, Dict, Tuple, Any
 import random
-from backend.swarm.robot_agent.agent import RobotAgent
-from backend.monitoring.logging.logger import logger
-from backend.monitoring.metrics.tracker import metrics
+fromswarm.robot_agent.agent import RobotAgent
+frommonitoring.logging.logger import logger
+frommonitoring.metrics.tracker import metrics
 
-from backend.swarm.communication.protocol import SwarmCommunication
+fromswarm.communication.protocol import SwarmCommunication
 
 class SwarmManager:
     """Manages and coordinates a collection of RobotAgents."""

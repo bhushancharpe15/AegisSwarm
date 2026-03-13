@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from backend.api.server import analytics_service
+fromapi.server import analytics_service
 
 router = APIRouter(prefix="/analytics", tags=["Analytics"])
 

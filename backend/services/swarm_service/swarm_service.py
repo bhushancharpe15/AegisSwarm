@@ -1,5 +1,5 @@
 from typing import List, Dict, Any
-from backend.core.simulation_engine import SimulationEngine
+fromcore.simulation_engine import SimulationEngine
 
 class SwarmService:
     def __init__(self, engine: SimulationEngine):

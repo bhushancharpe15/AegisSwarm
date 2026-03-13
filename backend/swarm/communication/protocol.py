@@ -1,5 +1,5 @@
 from typing import Dict, Any, List
-from backend.monitoring.logging.logger import logger
+frommonitoring.logging.logger import logger
 
 class SwarmCommunication:
     """Basic swarm communication protocol for sharing discoveries."""
