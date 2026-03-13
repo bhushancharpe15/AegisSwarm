@@ -1,10 +1,10 @@
 import numpy as np
 from collections import deque
 from typing import Tuple, Dict, Any, List
-fromsimulation.terrain.terrain_manager import TerrainManager
-fromsimulation.obstacle_system.manager import ObstacleManager
-frommonitoring.logging.logger import logger
-fromconfig.settings import settings
+from simulation.terrain.terrain_manager import TerrainManager
+from simulation.obstacle_system.manager import ObstacleManager
+from monitoring.logging.logger import logger
+from config.settings import settings
 
 class Environment:
     """Core simulation environment, managing the grid, terrain, and obstacles."""

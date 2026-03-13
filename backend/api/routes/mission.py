@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-fromapi.server import mission_controller
+from api.server import mission_controller
 
 router = APIRouter(prefix="/mission", tags=["Mission"])
 

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Tuple
 
-fromconfig.environment import environment
+from config.environment import environment
 
 @dataclass(frozen=True)
 class SimulationConfig:

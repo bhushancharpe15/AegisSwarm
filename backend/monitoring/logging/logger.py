@@ -1,7 +1,7 @@
 import logging
 import sys
 
-fromconfig.environment import environment
+from config.environment import environment
 
 
 def _resolve_log_level(level_name: str) -> int:

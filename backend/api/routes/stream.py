@@ -1,8 +1,8 @@
 import asyncio
 import json
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-fromapi.server import engine
-frommonitoring.logging.logger import logger
+from api.server import engine
+from monitoring.logging.logger import logger
 
 router = APIRouter(tags=["Streaming"])
 

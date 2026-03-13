@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Dict, Any
-fromcore.simulation_engine import SimulationEngine
-frommonitoring.metrics.tracker import metrics
+from core.simulation_engine import SimulationEngine
+from monitoring.metrics.tracker import metrics
 
 class AnalyticsService:
     def __init__(self, engine: SimulationEngine):

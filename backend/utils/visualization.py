@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from typing import Any
-fromsimulation.environment.grid import Environment
-fromswarm.swarm_manager.manager import SwarmManager
+from simulation.environment.grid import Environment
+from swarm.swarm_manager.manager import SwarmManager
 
 class Visualizer:
     """Handles the visualization of the simulation using Matplotlib."""
