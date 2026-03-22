@@ -86,3 +86,20 @@ app.include_router(stream.router)
 async def root():
     """Root endpoint - simple health indicator for load balancers."""
     return {"status": "ok", "service": "AegisSwarm API", "version": "1.0.0"}
+
+@app.get("/status")
+async def status():
+    """Detailed status endpoint for diagnostics."""
+    return {
+        "service": "AegisSwarm API",
+        "version": "1.0.0",
+        "engine_initialized": engine is not None and hasattr(engine, 'initialize'),
+        "engine_type": type(engine).__name__,
+        "services": {
+            "mission": mission_controller is not None,
+            "swarm": swarm_service is not None,
+            "analytics": analytics_service is not None,
+        },
+        "initialization_error": initialization_error,
+        "timestamp": __import__("datetime").datetime.utcnow().isoformat()
+    }
