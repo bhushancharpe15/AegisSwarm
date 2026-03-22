@@ -68,7 +68,9 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     """Log startup event."""
-    logger.info("AegisSwarm API starting up...")
+    logger.info("✓ AegisSwarm API started successfully")
+    logger.info(f"✓ Health check available at /health")
+    logger.info(f"✓ WebSocket streaming available at /ws/simulation")
 
 # Import routes after app and mission_controller are defined
 from api.routes import mission, swarm, environment, analytics, health, stream
@@ -79,3 +81,8 @@ app.include_router(environment.router)
 app.include_router(analytics.router)
 app.include_router(health.router)
 app.include_router(stream.router)
+
+@app.get("/")
+async def root():
+    """Root endpoint - simple health indicator for load balancers."""
+    return {"status": "ok", "service": "AegisSwarm API", "version": "1.0.0"}
