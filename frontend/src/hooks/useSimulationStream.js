@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { getWebSocketUrl } from '../services/api';
 
 export function useSimulationStream() {
     const [simulationData, setSimulationData] = useState(null);
@@ -9,10 +10,7 @@ export function useSimulationStream() {
     const connect = useCallback(() => {
         if (socketRef.current?.readyState === WebSocket.OPEN) return;
 
-        // Use relative path so Vite proxy handles it in dev,
-        // and the real host handles it in production (no hardcoded localhost)
-        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        const socket = new WebSocket(`${protocol}//${window.location.host}/ws/simulation`);
+        const socket = new WebSocket(getWebSocketUrl('/ws/simulation'));
         socketRef.current = socket;
 
         socket.onopen = () => {

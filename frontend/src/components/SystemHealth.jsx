@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Server, Wifi, WifiOff, Grid3x3, Bot, Gauge, Clock } from 'lucide-react';
+import { API_BASE_URL } from '../services/api';
 
 const Dot = ({ color }) => (
     <span className={`inline-block h-1.5 w-1.5 rounded-full ${color}`} />
@@ -34,7 +35,9 @@ const SystemHealth = ({ isConnected, simulationData, missionStatus }) => {
     const [startTime] = useState(Date.now());
 
     useEffect(() => {
-        fetch('/api/health').then(r => r.ok ? setApiOk(true) : setApiOk(false)).catch(() => setApiOk(false));
+        fetch(`${API_BASE_URL}/health`)
+            .then(r => r.ok ? setApiOk(true) : setApiOk(false))
+            .catch(() => setApiOk(false));
     }, []);
 
     useEffect(() => {
