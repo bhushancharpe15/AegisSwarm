@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi.responses import JSONResponse
 from api.server import engine
 
 router = APIRouter(prefix="/environment", tags=["Environment"])
