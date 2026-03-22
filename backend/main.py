@@ -8,7 +8,11 @@ def run_local_simulation():
     """Runs a dedicated local simulation (Phase 1/2 style)."""
     logger.info("AegisSwarm: Running Local Simulation Mode")
     engine = SimulationEngine()
-    engine.initialize()
+    try:
+        engine.initialize()
+    except Exception as e:
+        logger.error(f"Failed to initialize simulation engine: {e}")
+        return
     engine.start()
     
     try:

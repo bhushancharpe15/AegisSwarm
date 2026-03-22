@@ -8,7 +8,10 @@ from controllers.mission_controller import MissionController
 
 # Initialize Engine and Services
 engine = SimulationEngine()
-engine.initialize()
+try:
+    engine.initialize()
+except Exception as e:
+    print("Engine initialization failed:", e)
 
 mission_service = MissionService(engine)
 swarm_service = SwarmService(engine)
