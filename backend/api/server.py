@@ -1,17 +1,18 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from core.simulation_engine import SimulationEngine
-from services.mission_service.mission_service import MissionService
-from services.swarm_service.swarm_service import SwarmService
-from services.analytics_service.analytics_service import AnalyticsService
-from controllers.mission_controller import MissionController
+from backend.core.simulation_engine import SimulationEngine
+from backend.services.mission_service.mission_service import MissionService
+from backend.services.swarm_service.swarm_service import SwarmService
+from backend.services.analytics_service.analytics_service import AnalyticsService
+from backend.controllers.mission_controller import MissionController
+from backend.monitoring.logging.logger import logger
 
 # Initialize Engine and Services
 engine = SimulationEngine()
 try:
     engine.initialize()
 except Exception as e:
-    print("Engine initialization failed:", e)
+    logger.exception("Engine initialization failed: %s", e)
 
 mission_service = MissionService(engine)
 swarm_service = SwarmService(engine)
@@ -32,7 +33,7 @@ app.add_middleware(
 )
 
 # Import routes after app and mission_controller are defined
-from api.routes import mission, swarm, environment, analytics, health, stream
+from backend.api.routes import mission, swarm, environment, analytics, health, stream
 
 app.include_router(mission.router)
 app.include_router(swarm.router)

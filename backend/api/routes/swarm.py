@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from api.server import swarm_service
+from backend.api.server import swarm_service
 
 router = APIRouter(prefix="/robots", tags=["Swarm"])
 

@@ -1,8 +1,8 @@
 from typing import Tuple, List, Dict, Any, Callable
 import copy
 import numpy as np
-from ai_engine.heuristics.evaluation import HeuristicEvaluator
-from monitoring.logging.logger import logger
+from backend.ai_engine.heuristics.evaluation import HeuristicEvaluator
+from backend.monitoring.logging.logger import logger
 
 class MinimaxAlgorithm:
     """Implement Minimax search with Alpha-Beta pruning."""

@@ -1,5 +1,5 @@
-from services.mission_service.mission_service import MissionService
-from monitoring.logging.logger import logger
+from backend.services.mission_service.mission_service import MissionService
+from backend.monitoring.logging.logger import logger
 
 class MissionController:
     def __init__(self, mission_service: MissionService):

@@ -1,6 +1,6 @@
 from typing import Tuple, Dict, List, Any
 import numpy as np
-from monitoring.logging.logger import logger
+from backend.monitoring.logging.logger import logger
 
 class HeuristicEvaluator:
     """Provides scoring logic for evaluating environment states from a robot's perspective."""

@@ -1,6 +1,6 @@
 from typing import Tuple, List, Dict, Any
-from ai_engine.minimax.minimax_algorithm import MinimaxAlgorithm
-from monitoring.logging.logger import logger
+from backend.ai_engine.minimax.minimax_algorithm import MinimaxAlgorithm
+from backend.monitoring.logging.logger import logger
 
 class DecisionEngine:
     """Encapsulates the decision-making logic for an individual robot."""
