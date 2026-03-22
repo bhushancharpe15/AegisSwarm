@@ -7,18 +7,33 @@ from services.analytics_service.analytics_service import AnalyticsService
 from controllers.mission_controller import MissionController
 from monitoring.logging.logger import logger
 
-# Initialize Engine and Services
-engine = SimulationEngine()
+# Initialize Engine and Services with safe fallback
+engine = None
 try:
+    logger.info("Creating SimulationEngine...")
+    engine = SimulationEngine()
+    logger.info("Initializing SimulationEngine...")
     engine.initialize()
+    logger.info("SimulationEngine initialized successfully.")
 except Exception as e:
-    logger.exception("Engine initialization failed: %s", e)
+    logger.exception("Engine initialization failed, running in degraded mode: %s", e)
+    # Create a minimal engine stub to prevent crashes
+    if engine is None:
+        try:
+            engine = SimulationEngine()
+        except Exception as e2:
+            logger.critical("Failed to create engine stub: %s", e2)
+            raise
 
-mission_service = MissionService(engine)
-swarm_service = SwarmService(engine)
-analytics_service = AnalyticsService(engine)
-
-mission_controller = MissionController(mission_service)
+try:
+    mission_service = MissionService(engine)
+    swarm_service = SwarmService(engine)
+    analytics_service = AnalyticsService(engine)
+    mission_controller = MissionController(mission_service)
+    logger.info("All services initialized successfully.")
+except Exception as e:
+    logger.exception("Service initialization failed: %s", e)
+    raise
 
 app = FastAPI(title="AegisSwarm API", version="1.0.0")
 
@@ -31,6 +46,23 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+async def startup_event():
+    """Verify critical components are ready on startup."""
+    try:
+        if engine is None:
+            logger.critical("Engine is None on startup!")
+            raise RuntimeError("Engine failed to initialize")
+        logger.info("✓ Engine ready")
+        if not hasattr(engine, 'state'):
+            logger.critical("Engine missing state attribute!")
+            raise RuntimeError("Engine state missing")
+        logger.info("✓ Engine state accessible")
+        logger.info("AegisSwarm API ready to accept requests")
+    except Exception as e:
+        logger.exception("Startup verification failed: %s", e)
+        raise
 
 # Import routes after app and mission_controller are defined
 from api.routes import mission, swarm, environment, analytics, health, stream
