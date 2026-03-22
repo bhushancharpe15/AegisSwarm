@@ -1,6 +1,6 @@
 from typing import Dict, Any
-from backend.core.simulation_engine import SimulationEngine, MissionState
-from backend.monitoring.logging.logger import logger
+from core.simulation_engine import SimulationEngine, MissionState
+from monitoring.logging.logger import logger
 
 class MissionService:
     def __init__(self, engine: SimulationEngine):

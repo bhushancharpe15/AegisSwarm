@@ -1,7 +1,7 @@
 import logging
 import sys
 
-from backend.config.environment import environment
+from config.environment import environment
 
 
 def _resolve_log_level(level_name: str) -> int:

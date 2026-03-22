@@ -1,8 +1,8 @@
 import argparse
 import os
 import uvicorn
-from backend.core.simulation_engine import SimulationEngine
-from backend.monitoring.logging.logger import logger
+from core.simulation_engine import SimulationEngine
+from monitoring.logging.logger import logger
 
 def run_local_simulation():
     """Runs a dedicated local simulation (Phase 1/2 style)."""
@@ -30,7 +30,7 @@ def run_server():
     host = "0.0.0.0"
     port = int(os.environ.get("PORT", 8000))
     logger.info(f"AegisSwarm: Starting API Platform on {host}:{port}")
-    uvicorn.run("backend.api.server:app", host=host, port=port, reload=False)
+    uvicorn.run("api.server:app", host=host, port=port, reload=False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AegisSwarm Enterprise AI Platform")

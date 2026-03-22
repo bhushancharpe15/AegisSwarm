@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from backend.api.server import engine
+from api.server import engine
 
 router = APIRouter(prefix="/environment", tags=["Environment"])
 

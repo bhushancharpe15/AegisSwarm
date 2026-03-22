@@ -3,12 +3,12 @@ import numpy as np
 import threading
 from enum import Enum
 from typing import List, Tuple, Dict, Any, Optional
-from backend.simulation.environment.grid import Environment
-from backend.swarm.swarm_manager.manager import SwarmManager
-from backend.utils.visualization import Visualizer
-from backend.monitoring.logging.logger import logger
-from backend.monitoring.metrics.tracker import metrics
-from backend.config.settings import settings
+from simulation.environment.grid import Environment
+from swarm.swarm_manager.manager import SwarmManager
+from utils.visualization import Visualizer
+from monitoring.logging.logger import logger
+from monitoring.metrics.tracker import metrics
+from config.settings import settings
 
 class MissionState(Enum):
     INITIALIZED = "INITIALIZED"
